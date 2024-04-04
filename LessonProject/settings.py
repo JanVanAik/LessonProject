@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'mainapp',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +124,22 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers' : False,
+    'handlers': {
+        'file':{
+            'class' : 'logging.FileHandler',
+            'filename' : './log/django.log'
+        },
+    },
+    'loggers': {
+        'mainapp' : {
+            'handlers' : ['file'],
+            'level' : 'INFO',
+            'propagate' : True,
+        },
+    },
+}
