@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from mainapp.models import Order
+from django.utils.timezone import now, timedelta
 import logging
 
 logger = logging.getLogger(__name__)
@@ -15,9 +17,19 @@ def about(request):
 
 def orders(request):
     if request.method == 'POST':
+        delta = {
+            'year': 365,
+            'month': 30,
+            'week': 7,
+        }
         choice = request.POST.get('choice')
-    context = {
-        'title': "ORDERS",
-        # "form": form
-    }
+        orders = Order.objects.filter(order_datetime__gt=now()+timedelta(days=delta[choice]))
+        context = {
+            'title': "ORDERS",
+            'orders': orders
+        }
+    else:
+        context = {
+            'title': "ORDERS",
+        }
     return render(request, 'mainapp/orders.html', context)
