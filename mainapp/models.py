@@ -36,6 +36,3 @@ class Order(models.Model):
     order_datetime = models.DateTimeField(default=now)
     user_id = models.ForeignKey(BaseUser, on_delete=models.CASCADE)
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f'{self.name}'

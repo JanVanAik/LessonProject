@@ -23,7 +23,7 @@ def orders(request):
             'week': 7,
         }
         choice = request.POST.get('choice')
-        orders = Order.objects.filter(order_datetime__gt=now()+timedelta(days=delta[choice]))
+        orders = Order.objects.filter(order_datetime__gt=now()-timedelta(days=delta[choice]))
         context = {
             'title': "ORDERS",
             'orders': orders
