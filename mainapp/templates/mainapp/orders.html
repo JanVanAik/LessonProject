@@ -1,0 +1,14 @@
+{% extends 'mainapp/index.html' %}
+
+{% block content %}
+     <form action="{% url 'mainapp:orders' %}" method="post">
+     {% csrf_token %}
+       <p><select size="4" multiple name="choice">
+            <option disabled>Выберите интересующий вас период</option>
+            <option value="week">7 дней</option>
+            <option value="month">30 дней</option>
+            <option value="year">365 дней</option>
+       </select></p>
+       <p><input type="submit" value="Отправить"></p>
+  </form>
+{% endblock %}

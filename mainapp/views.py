@@ -15,10 +15,9 @@ def about(request):
 
 def orders(request):
     if request.method == 'POST':
-        pass
-    form = FORMTODO
+        choice = request.POST.get('choice')
     context = {
         'title': "ORDERS",
-        "form": form
+        # "form": form
     }
     return render(request, 'mainapp/orders.html', context)
