@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
 from django import forms
-from mainapp.models import User, Product, Order
+from mainapp.models import BaseUser, Product, Order
 
 
 class OrderForm(forms.ModelForm):

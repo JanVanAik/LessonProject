@@ -11,7 +11,7 @@ from django.utils.timezone import now
 
 
 # Create your models here.
-class User(AbstractUser):
+class BaseUser(AbstractUser):
     image = models.ImageField(upload_to='users_image', blank=True, null=True)
     adress = models.CharField(max_length=300)
 
@@ -25,7 +25,7 @@ class Product(models.Model):
     desc = models.TextField()
     quantity = models.PositiveIntegerField(default=0)
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
-    product_datetime = models.DateTimeField(default=now())
+    product_datetime = models.DateTimeField(default=now)
 
     def __str__(self):
         return f'{self.name}'
@@ -33,9 +33,9 @@ class Product(models.Model):
 
 class Order(models.Model):
     total_price = models.PositiveIntegerField(default=0)
-    order_datetime = models.DateTimeField(default=now())
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE())
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE())
+    order_datetime = models.DateTimeField(default=now)
+    user_id = models.ForeignKey(BaseUser, on_delete=models.CASCADE)
+    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.name}'

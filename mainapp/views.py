@@ -14,4 +14,11 @@ def about(request):
     return HttpResponse('<h4> Информация обо мне</h4>')
 
 def orders(request):
-    pass
+    if request.method == 'POST':
+        pass
+    form = FORMTODO
+    context = {
+        'title': "ORDERS",
+        "form": form
+    }
+    return render(request, 'mainapp/orders.html', context)
