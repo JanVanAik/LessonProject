@@ -12,3 +12,6 @@ def index(request):
 def about(request):
     logger.info(request) # данные о странице
     return HttpResponse('<h4> Информация обо мне</h4>')
+
+def orders(request):
+    pass
