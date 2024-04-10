@@ -1,5 +1,12 @@
-{%  extends 'mainapp/index.html' %}
+{% extends 'mainapp/index.html' %}
 
 {% block content %}
-
+    <form action="{% url 'mainapp:image' %}" method="post" class="">
+    {% csrf_token %}
+        <div class="custom-image">
+            {{ form.image }}
+            <label class="custom-file-label" for="{{ form.image.id_for_label }}">Выберите изображение</label>
+        </div>
+        <p><input type="submit" value="Отправить"></p>
+    </form>
 {% endblock %}

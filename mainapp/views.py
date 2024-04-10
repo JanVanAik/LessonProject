@@ -16,7 +16,8 @@ def about(request):
     return HttpResponse('<h4> Информация обо мне</h4>')
 
 def image(request):
-    pass
+
+    return render(request, 'mainapp/image.html')
 
 def orders(request):
     if request.method == 'POST':

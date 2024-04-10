@@ -12,7 +12,7 @@ class OrderForm(forms.ModelForm):
 
 
 class ProductForm(forms.ModelForm):
-    image = forms.ImageField(widget=forms.FileInput (attrs={'class': 'image-input'}), required=False)
+    image = forms.ImageField(widget=forms.FileInput, required=False)
 
     class Meta:
         model = Product
