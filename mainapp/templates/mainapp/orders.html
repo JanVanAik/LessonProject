@@ -1,0 +1,26 @@
+{% extends 'mainapp/index.html' %}
+
+{% block content %}
+    <form action="{% url 'mainapp:orders' %}" method="post">
+        {% csrf_token %}
+        <p><select size="4" multiple name="choice">
+            <option disabled>Выберите интересующий вас период</option>
+            <option value="week">7 дней</option>
+            <option value="month">30 дней</option>
+            <option value="year">365 дней</option>
+        </select></p>
+        <p><input type="submit" value="Отправить"></p>
+    </form>
+    {% if orders %}
+        {% for order in orders %}
+            <h1 class="card-title">
+                <a href="#">{{ order.user_id }}</a>
+            </h1>
+            <h2 class="card-title">
+                <a href="#">{{ order.product_id }}</a>
+            </h2>
+            <h4>{{ order.order_datetime }}</h4>
+            <p class="card-text">{{ order.total_price }}</p>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
