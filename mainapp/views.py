@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 from django.http import HttpResponse
+from django.urls import reverse
 from mainapp.models import Order
+from mainapp.forms import ProductForm
 from django.utils.timezone import now, timedelta
 import logging
 
@@ -14,6 +16,21 @@ def index(request):
 def about(request):
     logger.info(request) # данные о странице
     return HttpResponse('<h4> Информация обо мне</h4>')
+
+def image(request):
+    if request.method == 'POST':
+        form = ProductForm(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            print('Image succesfully changed')
+            return HttpResponseRedirect(reverse("mainapp:image"))
+    else:
+        form = ProductForm()
+    context = {
+        'title': 'Image change page',
+        'form': form,
+    }
+    return render(request, 'mainapp/image.html', context)
 
 def orders(request):
     if request.method == 'POST':

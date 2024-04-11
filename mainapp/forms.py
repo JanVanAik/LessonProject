@@ -9,3 +9,11 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ('order_datetime', 'user_id', 'product_id', 'total_price')
+
+
+class ProductForm(forms.ModelForm):
+    image = forms.ImageField(widget=forms.FileInput, required=False)
+
+    class Meta:
+        model = Product
+        fields = ('image', )
