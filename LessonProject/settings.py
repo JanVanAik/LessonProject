@@ -83,8 +83,15 @@ WSGI_APPLICATION = 'LessonProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'JanVanAik$default',
+        'User': 'JanVanAik',
+        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
+        'HOST': 'JanVanAik.mysql.pythonanywhere-services.com',
+        'OPTIONS': {
+            'init-command': 'SETNAMES "utf8mb4"; SET sql_mode="STRICT_TRANS_TABLES"',
+            'charset': 'utf8mb4',
+        },
     }
 }
 
