@@ -89,7 +89,7 @@ DATABASES = {
         'PASSWORD': os.getenv('MYSQL_PASSWORD'),
         'HOST': 'JanVanAik.mysql.pythonanywhere-services.com',
         'OPTIONS': {
-            'init-command': 'SETNAMES "utf8mb4"; SET sql_mode="STRICT_TRANS_TABLES"',
+            'init-command': 'SET NAMES "utf8mb4"; SET sql_mode="STRICT_TRANS_TABLES"',
             'charset': 'utf8mb4',
         },
     }
