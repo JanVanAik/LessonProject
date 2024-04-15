@@ -1,4 +1,9 @@
 # created by virtualenv automatically
-lib
+/media/
+/static/
+/log/
+.sqlite3
+.log
+.pyc
 .idea
 bin
